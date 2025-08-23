@@ -1,5 +1,6 @@
 package com.abhishek.githubusers.di
 
+import com.abhishek.githubusers.data.network.ApiService
 import com.abhishek.githubusers.utils.AppConstants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -20,5 +21,12 @@ object NetworkModule {
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideApiService(retrofit: Retrofit): ApiService {
+        return retrofit.create(ApiService::class.java)
     }
 }

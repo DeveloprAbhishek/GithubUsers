@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.compose.compiler)
     id("kotlin-kapt")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -100,6 +101,10 @@ dependencies {
     // Lottie
     implementation(libs.lottie.compose)
     implementation(libs.coil.compose.v260)
+
+    // Moshi
+    implementation(libs.moshi)
+    kapt(libs.moshi.kotlin.codegen)
 }
 
 kapt {
