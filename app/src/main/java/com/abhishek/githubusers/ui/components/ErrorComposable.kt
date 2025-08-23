@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun ErrorComposable(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     errorMessage: String
 ) {
     Box(
