@@ -11,6 +11,8 @@ import com.abhishek.githubusers.ui.viewmodel.UsersUiState
 fun UserListScreenComposable(
     modifier: Modifier = Modifier,
     uiState: UsersUiState,
+    searchQuery: String,
+    onSearchQueryChanged: (String) -> Unit
 ) {
     when (val state = uiState) {
         is UsersUiState.Loading -> LoadingComposable(
@@ -26,6 +28,8 @@ fun UserListScreenComposable(
             UserListComposable(
                 modifier = modifier,
                 users = state.data,
+                searchQuery = searchQuery,
+                onSearchQueryChanged = onSearchQueryChanged
             )
         }
     }
@@ -36,7 +40,9 @@ fun UserListScreenComposable(
 fun ErrorScreen() {
     UserListScreenComposable(
         modifier = Modifier.fillMaxSize(),
-        uiState = UsersUiState.Error("Something went wrong")
+        uiState = UsersUiState.Error("Something went wrong"),
+        searchQuery = "",
+        onSearchQueryChanged = {}
     )
 }
 
@@ -45,7 +51,9 @@ fun ErrorScreen() {
 fun LoadingScreen() {
     UserListScreenComposable(
         modifier = Modifier.fillMaxSize(),
-        uiState = UsersUiState.Loading
+        uiState = UsersUiState.Loading,
+        searchQuery = "",
+        onSearchQueryChanged = {}
     )
 }
 
@@ -56,6 +64,8 @@ fun SuccessScreen() {
         modifier = Modifier.fillMaxSize(),
         uiState = UsersUiState.Success(
             data = PreviewUtils.getUserList()
-        )
+        ),
+        searchQuery = "",
+        onSearchQueryChanged = {}
     )
 }

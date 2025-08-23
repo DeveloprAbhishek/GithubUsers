@@ -21,9 +21,13 @@ class UserListActivity : ComponentActivity() {
             GithubUsersTheme {
                 val viewModel: UsersViewModel = hiltViewModel()
                 val uiState by viewModel.usersUiState.collectAsState()
+                val searchQuery by viewModel.searchQuery.collectAsState()
+
                 UserListScreenComposable(
                     modifier = Modifier.fillMaxSize(),
-                    uiState = uiState
+                    uiState = uiState,
+                    searchQuery = searchQuery,
+                    onSearchQueryChanged = viewModel::onSearchQueryChanged
                 )
             }
         }
