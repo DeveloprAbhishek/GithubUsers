@@ -27,7 +27,7 @@ fun UserListScreenComposable(
         is UsersUiState.Success -> {
             UserListComposable(
                 modifier = modifier,
-                users = state.data,
+                users = state.users,
                 searchQuery = searchQuery,
                 onSearchQueryChanged = onSearchQueryChanged
             )
@@ -63,7 +63,7 @@ fun SuccessScreen() {
     UserListScreenComposable(
         modifier = Modifier.fillMaxSize(),
         uiState = UsersUiState.Success(
-            data = PreviewUtils.getUserList()
+            users = PreviewUtils.getUserList()
         ),
         searchQuery = "",
         onSearchQueryChanged = {}

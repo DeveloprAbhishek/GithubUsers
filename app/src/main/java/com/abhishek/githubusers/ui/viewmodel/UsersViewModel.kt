@@ -4,14 +4,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.abhishek.githubusers.data.model.UsersItem
 import com.abhishek.githubusers.data.repository.UsersRepository
+import com.abhishek.githubusers.utils.AppConstants.DEBOUNCE_TIMEOUT
 import com.abhishek.githubusers.utils.AppConstants.UNKNOWN_ERROR
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
+@OptIn(FlowPreview::class)
 @HiltViewModel
 class UsersViewModel @Inject constructor(
     private val usersRepository: UsersRepository
@@ -26,6 +31,14 @@ class UsersViewModel @Inject constructor(
 
     init {
         fetchGithubUsers()
+        viewModelScope.launch {
+            _searchQuery
+                .debounce(DEBOUNCE_TIMEOUT)
+                .distinctUntilChanged()
+                .collect { query ->
+                    filterUsers(query)
+                }
+        }
     }
 
     private fun fetchGithubUsers() {
@@ -43,7 +56,6 @@ class UsersViewModel @Inject constructor(
 
     fun onSearchQueryChanged(query: String) {
         _searchQuery.value = query
-        filterUsers(query)
     }
 
     private fun filterUsers(query: String) {
