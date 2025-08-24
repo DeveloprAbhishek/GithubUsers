@@ -1,13 +1,14 @@
 package com.abhishek.githubusers.data.model
 
 import android.os.Parcelable
+import com.abhishek.githubusers.ui.model.UsersItemUi
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @JsonClass(generateAdapter = true)
-data class UsersItem(
+data class UsersItemDto(
     val id: Int,
     val login: String,
     @Json(name = "avatar_url") val avatarUrl: String,

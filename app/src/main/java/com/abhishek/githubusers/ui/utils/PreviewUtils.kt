@@ -1,9 +1,10 @@
 package com.abhishek.githubusers.ui.utils
 
-import com.abhishek.githubusers.data.model.UsersItem
+import com.abhishek.githubusers.data.model.UsersItemDto
+import com.abhishek.githubusers.ui.model.UsersItemUi
 
 object PreviewUtils {
-    fun getUsersData(): UsersItem = UsersItem(
+    fun getUserData(): UsersItemDto = UsersItemDto(
         id = 101,
         login = "dummy_user",
         avatarUrl = "https://example.com/avatar.png",
@@ -25,5 +26,11 @@ object PreviewUtils {
         nodeId = "MDQ6VXNlcjEwMQ=="
     )
 
-    fun getUserList(): List<UsersItem> = List(6) { getUsersData() }
+    fun getUserItemList(): List<UsersItemUi> = List(6) {
+        UsersItemUi(
+            id = it,
+            login = "dummy_user_$it",
+            avatarUrl = "https://example.com/avatar.png"
+        )
+    }
 }

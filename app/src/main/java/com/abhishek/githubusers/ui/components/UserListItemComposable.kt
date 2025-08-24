@@ -20,12 +20,12 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.abhishek.githubusers.data.model.UsersItem
+import com.abhishek.githubusers.ui.model.UsersItemUi
 
 @Composable
 fun UserListItemComposable(
     modifier: Modifier = Modifier,
-    user: UsersItem
+    user: UsersItemUi
 ) {
     Card(
         modifier = modifier

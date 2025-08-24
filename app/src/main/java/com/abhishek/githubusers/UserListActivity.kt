@@ -4,10 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.abhishek.githubusers.ui.components.UserListScreenComposable
 import com.abhishek.githubusers.ui.theme.GithubUsersTheme
 import com.abhishek.githubusers.ui.viewmodel.UsersViewModel
@@ -20,8 +20,8 @@ class UserListActivity : ComponentActivity() {
         setContent {
             GithubUsersTheme {
                 val viewModel: UsersViewModel = hiltViewModel()
-                val uiState by viewModel.usersUiState.collectAsState()
-                val searchQuery by viewModel.searchQuery.collectAsState()
+                val uiState by viewModel.usersUiState.collectAsStateWithLifecycle()
+                val searchQuery by viewModel.searchQuery.collectAsStateWithLifecycle()
 
                 UserListScreenComposable(
                     modifier = Modifier.fillMaxSize(),
