@@ -1,5 +1,6 @@
 package com.abhishek.githubusers.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,12 +26,16 @@ import com.abhishek.githubusers.ui.model.UsersItemUi
 @Composable
 fun UserListItemComposable(
     modifier: Modifier = Modifier,
-    user: UsersItemUi
+    user: UsersItemUi,
+    onUserItemClick: (String) -> Unit = {}
 ) {
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .clickable {
+                onUserItemClick(user.login)
+            },
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Row(

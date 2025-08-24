@@ -27,9 +27,14 @@ class UserListActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     uiState = uiState,
                     searchQuery = searchQuery,
-                    onSearchQueryChanged = viewModel::onSearchQueryChanged
+                    onSearchQueryChanged = viewModel::onSearchQueryChanged,
+                    onUserItemClick = ::onUserItemClick
                 )
             }
         }
+    }
+
+    private fun onUserItemClick(userName: String) {
+        startActivity(UserDetailsActivity.createIntent(this, userName))
     }
 }

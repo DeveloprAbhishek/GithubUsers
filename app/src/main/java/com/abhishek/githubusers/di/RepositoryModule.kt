@@ -4,6 +4,8 @@ import com.abhishek.githubusers.data.db.UserDao
 import com.abhishek.githubusers.data.network.ApiService
 import com.abhishek.githubusers.data.repository.UsersRepository
 import com.abhishek.githubusers.domain.mapper.UserDataMapper
+import com.abhishek.githubusers.domain.mapper.UserDetailsMapper
+import com.abhishek.githubusers.domain.mapper.UserRepositoryMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,8 +21,16 @@ object RepositoryModule {
     fun provideUsersRepository(
         apiService: ApiService,
         userDao: UserDao,
-        userDataMapper: UserDataMapper
+        userDataMapper: UserDataMapper,
+        userDetailsMapper: UserDetailsMapper,
+        userRepositoryMapper: UserRepositoryMapper
     ): UsersRepository {
-        return UsersRepository(apiService, userDao, userDataMapper)
+        return UsersRepository(
+            apiService,
+            userDao,
+            userDataMapper,
+            userDetailsMapper,
+            userRepositoryMapper
+        )
     }
 }

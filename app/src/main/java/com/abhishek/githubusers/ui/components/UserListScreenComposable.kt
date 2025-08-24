@@ -21,7 +21,8 @@ fun UserListScreenComposable(
     modifier: Modifier = Modifier,
     uiState: UsersUiState,
     searchQuery: String,
-    onSearchQueryChanged: (String) -> Unit
+    onSearchQueryChanged: (String) -> Unit,
+    onUserItemClick: (String) -> Unit = {}
 ) {
     Scaffold(
         modifier = modifier,
@@ -57,6 +58,7 @@ fun UserListScreenComposable(
                     UserListComposable(
                         modifier = Modifier.fillMaxSize(),
                         users = state.users,
+                        onUserItemClick = onUserItemClick
                     )
                 }
 

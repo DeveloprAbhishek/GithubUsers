@@ -10,12 +10,16 @@ import com.abhishek.githubusers.ui.model.UsersItemUi
 fun UserListComposable(
     modifier: Modifier = Modifier,
     users: List<UsersItemUi>,
+    onUserItemClick: (String) -> Unit = {}
 ) {
     LazyColumn(
         modifier = modifier
     ) {
         items(users) { user ->
-            UserListItemComposable(user = user)
+            UserListItemComposable(
+                user = user,
+                onUserItemClick = onUserItemClick
+            )
         }
     }
 }
