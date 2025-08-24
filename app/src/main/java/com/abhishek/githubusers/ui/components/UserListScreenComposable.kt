@@ -13,8 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.abhishek.githubusers.ui.theme.Purple40
 import com.abhishek.githubusers.ui.utils.PreviewUtils
 import com.abhishek.githubusers.ui.viewmodel.UsersUiState
+import com.abhishek.githubusers.utils.AppConstants.GITHUB_USERS
 
 @Composable
 fun UserListScreenComposable(
@@ -28,8 +30,8 @@ fun UserListScreenComposable(
         modifier = modifier,
         topBar = {
             TopBarComposable(
-                toolbarText = "Github Users",
-                backgroundColor = Color.Blue
+                toolbarText = GITHUB_USERS,
+                backgroundColor = Purple40
             )
         }
     ) { innerPadding ->

@@ -33,7 +33,10 @@ class UserDetailsActivity : ComponentActivity() {
         setContent {
             val uiState by viewModel.uiState.collectAsState()
             GithubUsersTheme {
-                UserDetailsScreen(uiState)
+                UserDetailsScreen(
+                    uiState = uiState,
+                    onBackPress = { finish() }
+                )
             }
         }
     }

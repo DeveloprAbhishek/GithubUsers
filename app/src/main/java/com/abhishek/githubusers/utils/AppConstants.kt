@@ -11,4 +11,6 @@ object AppConstants {
     const val NETWORK_ERROR = "Couldn't reach server. Check your internet connection."
     const val DEBOUNCE_TIMEOUT = 500L
     const val DB_NAME = "github_users.db"
+    const val GITHUB_USERS = "Github Users"
+    const val USERS_DETAILS = "User Details"
 }
