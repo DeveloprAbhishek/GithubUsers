@@ -5,7 +5,9 @@ import com.abhishek.githubusers.data.network.ApiService
 import com.abhishek.githubusers.data.repository.UsersRepository
 import com.abhishek.githubusers.domain.mapper.UserDataMapper
 import com.abhishek.githubusers.domain.mapper.UserDetailsMapper
+import com.abhishek.githubusers.domain.mapper.UserDetailsUiMapper
 import com.abhishek.githubusers.domain.mapper.UserRepositoryMapper
+import com.abhishek.githubusers.domain.mapper.UserRepositoryUiMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,14 +25,18 @@ object RepositoryModule {
         userDao: UserDao,
         userDataMapper: UserDataMapper,
         userDetailsMapper: UserDetailsMapper,
-        userRepositoryMapper: UserRepositoryMapper
+        userRepositoryMapper: UserRepositoryMapper,
+        userDetailsUiMapper: UserDetailsUiMapper,
+        userRepositoryUiMapper: UserRepositoryUiMapper,
     ): UsersRepository {
         return UsersRepository(
             apiService,
             userDao,
             userDataMapper,
             userDetailsMapper,
-            userRepositoryMapper
+            userRepositoryMapper,
+            userDetailsUiMapper,
+            userRepositoryUiMapper,
         )
     }
 }

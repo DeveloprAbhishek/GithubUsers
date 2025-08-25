@@ -29,7 +29,7 @@ fun UserRepositoryListItem(repo: UserRepositoryUi) {
             Row {
                 Text(text = repo.name, fontWeight = FontWeight.Bold)
                 Spacer(modifier = Modifier.width(4.dp))
-                if (repo.private) Text(text = "(Private)", fontWeight = FontWeight.Bold)
+                if (repo.isPrivate) Text(text = "(Private)", fontWeight = FontWeight.Bold)
                 else Text(text = "(Public)", fontWeight = FontWeight.Bold)
             }
             Spacer(modifier = Modifier.height(4.dp))

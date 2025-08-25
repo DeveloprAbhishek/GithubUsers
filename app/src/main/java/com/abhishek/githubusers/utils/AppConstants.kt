@@ -1,7 +1,7 @@
 package com.abhishek.githubusers.utils
 
 object AppConstants {
-    const val BASE_URL = "https://api.github.com/"
+    const val BASE_URL = "https://f0570933-6358-4c73-8d1e-5884a319757f.mock.pstmn.io/"
     const val GET_USERS = "users"
     const val GET_USER_DETAILS = "users/{username}"
     const val GET_USER_REPOS = "users/{username}/repos"

@@ -8,7 +8,7 @@ import com.abhishek.githubusers.ui.model.UserRepositoryUi
 @Composable
 fun UserRepositoryList(repositories: List<UserRepositoryUi>) {
     LazyColumn {
-        items(repositories) { repo ->
+        items(repositories, key = { it.id }) { repo ->
             UserRepositoryListItem(repo = repo)
         }
     }
