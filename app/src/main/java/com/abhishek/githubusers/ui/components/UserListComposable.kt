@@ -15,7 +15,7 @@ fun UserListComposable(
     LazyColumn(
         modifier = modifier
     ) {
-        items(users) { user ->
+        items(users, key = { it.id }) { user ->
             UserListItemComposable(
                 user = user,
                 onUserItemClick = onUserItemClick

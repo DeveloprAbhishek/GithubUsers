@@ -85,4 +85,8 @@ class UsersViewModel @Inject constructor(
     fun onSearchQueryChanged(query: String) {
         _searchQuery.value = query
     }
+
+    fun onClearSearch() {
+        _searchQuery.value = ""
+    }
 }

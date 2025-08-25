@@ -32,7 +32,8 @@ class UserListActivity : ComponentActivity() {
                     uiState = uiState,
                     searchQuery = searchQuery,
                     onSearchQueryChanged = viewModel::onSearchQueryChanged,
-                    onUserItemClick = ::onUserItemClick
+                    onUserItemClick = ::onUserItemClick,
+                    onClearSearchQuery = viewModel::onClearSearch
                 )
             }
         }

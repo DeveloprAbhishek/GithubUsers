@@ -5,6 +5,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -16,7 +20,9 @@ import androidx.compose.ui.unit.dp
 import com.abhishek.githubusers.ui.theme.Purple40
 import com.abhishek.githubusers.ui.utils.PreviewUtils
 import com.abhishek.githubusers.ui.viewmodel.UsersUiState
+import com.abhishek.githubusers.utils.AppConstants.CLEAR_SEARCH_QUERY
 import com.abhishek.githubusers.utils.AppConstants.GITHUB_USERS
+import com.abhishek.githubusers.utils.AppConstants.SEARCH_USERS
 
 @Composable
 fun UserListScreenComposable(
@@ -24,7 +30,8 @@ fun UserListScreenComposable(
     uiState: UsersUiState,
     searchQuery: String,
     onSearchQueryChanged: (String) -> Unit,
-    onUserItemClick: (String) -> Unit = {}
+    onUserItemClick: (String) -> Unit = {},
+    onClearSearchQuery: () -> Unit = {}
 ) {
     Scaffold(
         modifier = modifier,
@@ -43,7 +50,17 @@ fun UserListScreenComposable(
                     .background(Color.White),
                 value = searchQuery,
                 onValueChange = onSearchQueryChanged,
-                placeholder = { Text(text = "Search Users") }
+                placeholder = { Text(text = SEARCH_USERS) },
+                trailingIcon = {
+                    if (searchQuery.isNotEmpty()) {
+                        IconButton(onClick = { onClearSearchQuery() }) {
+                            Icon(
+                                imageVector = Icons.Default.Close,
+                                contentDescription = CLEAR_SEARCH_QUERY
+                            )
+                        }
+                    }
+                }
             )
 
             when (val state = uiState) {
