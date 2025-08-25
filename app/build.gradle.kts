@@ -51,8 +51,15 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.androidx.core.testing)
+    testImplementation(libs.turbine)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.mockk.android)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.mockito.core)
 
     // Jetpack Compose
     implementation(platform(libs.androidx.compose.bom))
